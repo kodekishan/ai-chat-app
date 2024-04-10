@@ -17,7 +17,7 @@ export const Sidebar = () => {
     },
     {
       icon: Plus,
-      href: "/user/new",
+      href: "/robot/new",
       label: "Create",
       pro: false,
     },
@@ -35,7 +35,7 @@ export const Sidebar = () => {
 
   return (
     <div className="space-y-4 flex flex-col h-full border-r border-primary/20 text-primary bg-white">
-      <div className="flex flex-1 justify-center">
+      <div className="p-2 flex flex-1 justify-center">
         <div className="space-y-2">
           {routes.map((route) => (
             <div
