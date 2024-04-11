@@ -30,7 +30,7 @@ export const SearchInput = () => {
   }, [debouncedValue, router]);
 
   return (
-    <div className="m-3 relative w-3/6">
+    <div className="mx-auto my-2 relative w-2/6">
       <Search className="absolute h-4 w-4 top-3 left-4 text-muted-foreground" />
       <Input
         onChange={onChange}
