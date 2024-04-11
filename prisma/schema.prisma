@@ -15,7 +15,7 @@ datasource db {
   relationMode = "prisma"
 }
 
-// Here robots are the AI ChatUsers that will respond to your messages. You can create as much as chatusers you want. Likely you are creating multiple chats in chatgpt for numerous messages.
+// Here ChatRobots will respond to your messages. You can create as much as chatrobot you want. Likely you are creating multiple chats in chatgpt for numerous messages.
 model Robot {
   id            String @id @default(uuid())
   userId        String
