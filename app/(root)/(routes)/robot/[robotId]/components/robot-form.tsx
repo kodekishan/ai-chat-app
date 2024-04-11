@@ -1,4 +1,6 @@
 "use client";
+
+import axios from "axios";
 import * as z from "zod";
 import { Robot } from "@prisma/client";
 import { useForm } from "react-hook-form";
@@ -20,6 +22,8 @@ import { PREAMBLE } from "@/robots/robo-text";
 import { SEED_CHAT } from "@/robots/robo-text";
 import { Button } from "@/components/ui/button";
 import { Wand2 } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
+import { useRouter } from "next/navigation";
 
 interface RobotFormProps {
   data: Robot | null;
@@ -36,6 +40,9 @@ const formSchema = z.object({
 });
 
 export const RobotForm = ({ data }: RobotFormProps) => {
+  const { toast } = useToast();
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: data || {
@@ -49,7 +56,27 @@ export const RobotForm = ({ data }: RobotFormProps) => {
 
   const isLoading = form.formState.isSubmitting;
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log("==> ", values);
+    try {
+      if (data) await axios.patch(`/api/robot/${data.id}`, values);
+      else await axios.post("/api/robot", values);
+      
+      toast({
+        className: "bg-sky-600 text-white",
+        title: "success",
+        description: "Robot saved",
+      });
+      
+      router.refresh();
+      router.push("/");
+      
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Something went wrong",
+        description: error?.toString(),
+      });
+      console.log(error, "Something went wrong");
+    }
   };
 
   return (
