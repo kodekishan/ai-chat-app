@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={cn("bg-secondary", inter.className)}>
+        <body className={cn("bg-sky-50", inter.className)}>
           {children}
           <Toaster />
         </body>
