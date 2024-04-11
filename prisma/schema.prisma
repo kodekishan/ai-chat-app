@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 datasource db {
@@ -14,7 +15,7 @@ datasource db {
   relationMode = "prisma"
 }
 
-// Here robots are the AI Users that will respond to your chat.
+// Here robots are the AI ChatUsers that will respond to your messages. You can create as much as chatusers you want. Likely you are creating multiple chats in chatgpt for numerous messages.
 model Robot {
   id            String @id @default(uuid())
   userId        String
@@ -27,4 +28,24 @@ model Robot {
 
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+
+  messages Message[]
+}
+
+enum Role {
+  user
+  robot
+}
+
+model Message {
+  id            String @id @default(uuid())
+  role          Role
+  content       String @db.Text
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  robotId       String
+  userId        String
+  robot         Robot @relation(fields: [robotId], references: [id], onDelete: Cascade)
+
+  @@index([robotId])
 }
