@@ -12,7 +12,7 @@ const RobotIdPage = async ({ params }: RobotIdPageProps) => {
     where: { id: params.robotId },
   });
   return (
-    <div>
+    <div className="bg-sky-50">
       <RobotForm data={robot} />
     </div>
   );
