@@ -21,7 +21,7 @@ export async function PATCH(
       return new NextResponse("Missing parameters", { status: 400 });
 
     const robot = await prismadb.robot.update({
-      where: { id: params.robotId },
+      where: { id: params.robotId, userId: user.id },
       data: {
         userId: user.id,
         userName: user.firstName,
