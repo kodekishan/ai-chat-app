@@ -42,8 +42,8 @@ export const Sidebar = () => {
               key={route.href}
               onClick={() => onNavigate(route.href, route.pro)}
               className={cn(
-                "text-muted-foreground text-black text-xs group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-sky-600 hover:bg-primary/10 rounded-lg transition",
-                pathname === route.href && "bg-primary/10 text-sky-600"
+                "text-muted-foreground text-black text-xs group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-sky-600 hover:bg-primary/5 rounded-lg transition",
+                pathname === route.href && "bg-primary/5 text-sky-600"
               )}
             >
               <div className="flex flex-col gap-y-2 items-center flex-1">
