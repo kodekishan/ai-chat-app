@@ -59,16 +59,15 @@ export const RobotForm = ({ data }: RobotFormProps) => {
     try {
       if (data) await axios.patch(`/api/robot/${data.id}`, values);
       else await axios.post("/api/robot", values);
-      
+
       toast({
         className: "bg-sky-600 text-white",
         title: "success",
         description: "Robot saved",
       });
-      
+
       router.refresh();
       router.push("/");
-      
     } catch (error) {
       toast({
         variant: "destructive",
@@ -89,11 +88,11 @@ export const RobotForm = ({ data }: RobotFormProps) => {
           <div className="space-y-2 w-full">
             <div>
               <h3 className="text-lg font-medium">General Information</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm">
                 Basic details on artificial intelligence robots
               </p>
             </div>
-            <Separator className="bg-primary/10" />
+            <Separator className="bg-sky-600" />
           </div>
           <FormField
             name="src"
@@ -155,11 +154,9 @@ export const RobotForm = ({ data }: RobotFormProps) => {
           <div className="space-y-2 w-full">
             <div>
               <h3 className="text-lg font-medium"> Configuration</h3>
-              <p className="text-sm text-muted-foreground">
-                Comprehensive guidelines for AI conduct
-              </p>
+              <p className="text-sm">Comprehensive guidelines for AI conduct</p>
             </div>
-            <Separator className="bg-primary/10" />
+            <Separator className="bg-sky-600" />
           </div>
           <FormField
             name="instruction"
