@@ -66,8 +66,8 @@ export const RobotForm = ({ data }: RobotFormProps) => {
         description: "Robot saved",
       });
 
-      router.refresh();
       router.push("/");
+      router.refresh();
     } catch (error) {
       toast({
         variant: "destructive",
