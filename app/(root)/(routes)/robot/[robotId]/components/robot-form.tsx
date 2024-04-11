@@ -89,7 +89,7 @@ export const RobotForm = ({ data }: RobotFormProps) => {
             <div>
               <h3 className="text-lg font-medium">General Information</h3>
               <p className="text-sm">
-                Basic details on artificial intelligence robots
+                Basic details on artificial intelligence chat robots
               </p>
             </div>
             <Separator className="bg-sky-600" />
