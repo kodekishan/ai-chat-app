@@ -24,7 +24,9 @@ export const Navbar = () => {
         </h1>
       </div>
       <div className="flex items-center gap-x-3">
-        <UserButton />
+        <UserButton
+          afterSignOutUrl={process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL}
+        />
       </div>
     </div>
   );
