@@ -19,11 +19,11 @@ export const Robots = ({ data }: RobotsProp) => {
     );
   }
   return (
-    <div className="mx-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-col-6 gap-2 pb-10">
+    <div className="mx-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-col-6 gap-6 py-10">
       {data.map((item) => (
         <Card
           key={item.id}
-          className="bg-white rounded-xl cursor-pointer hover:opacity-75 transition border-0"
+          className="bg-white rounded-xl cursor-pointer hover:opacity-75 transition border-0 shadow-md"
         >
           <Link href={`/chat/${item.id}`}>
             <CardHeader className="flex items-center justify-center text-center text-muted-foreground">
