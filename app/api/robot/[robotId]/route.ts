@@ -1,5 +1,5 @@
 import prismadb from "@/lib/prismadb";
-import { currentUser } from "@clerk/nextjs";
+import { currentUser, auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
 export async function PATCH(
@@ -36,6 +36,29 @@ export async function PATCH(
     return NextResponse.json(robot);
   } catch (err) {
     console.error("Robot PATCH", err);
+    return new NextResponse("Internal Server Error", { status: 500 });
+  }
+}
+
+export async function DELETE(
+  req: Request,
+  { params }: { params: { robotId: string } }
+) {
+  try {
+    const { userId } = auth();
+
+    if (!params.robotId)
+      return new NextResponse("Robot Id is required", { status: 400 });
+
+    if (!userId) return new NextResponse("Unauthorized", { status: 401 });
+
+    const robot = await prismadb.robot.delete({
+      where: { userId, id: params.robotId },
+    });
+
+    return NextResponse.json(robot);
+  } catch (err) {
+    console.error("Robot Delete", err);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
