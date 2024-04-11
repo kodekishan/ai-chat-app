@@ -20,8 +20,10 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={cn("bg-secondary", inter.className)}>{children}</body>
-        <Toaster />
+        <body className={cn("bg-secondary", inter.className)}>
+          {children}
+          <Toaster />
+        </body>
       </html>
     </ClerkProvider>
   );
