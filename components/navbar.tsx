@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { UserButton } from "@clerk/nextjs";
 import { Poppins } from "next/font/google";
+import { BotMessageSquare } from "lucide-react";
 
 const font = Poppins({ weight: "600", subsets: ["latin"] });
 
@@ -16,7 +17,10 @@ export const Navbar = () => {
             font.className
           )}
         >
-          AI Chatting interface
+          <div className="flex justify-center items-center gap-4">
+            <BotMessageSquare className=" text-bold w-10 h-10" />
+            Dashboard
+          </div>
         </h1>
       </div>
       <div className="flex items-center gap-x-3">
