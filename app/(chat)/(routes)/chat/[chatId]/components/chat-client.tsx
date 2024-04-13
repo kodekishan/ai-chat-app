@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { ChatForm } from "@/components/chat-form";
 import { ChatMessages } from "@/components/chat-messages";
+import { ChatMessageProps } from "@/components/chat-message";
 
 interface ChatClientProps {
   robot: Robot & { messages: Message[]; _count: { messages: number } };
@@ -13,7 +14,7 @@ interface ChatClientProps {
 
 export const ChatClient = ({ robot }: ChatClientProps) => {
   const router = useRouter();
-  const [messages, setMessages] = useState<any[]>(robot.messages);
+  const [messages, setMessages] = useState<ChatMessageProps[]>(robot.messages);
   const {
     input,
     isLoading,
@@ -23,7 +24,7 @@ export const ChatClient = ({ robot }: ChatClientProps) => {
   } = useCompletion({
     api: `/api/chat/${robot.id}`,
     onFinish(prompt, completion) {
-      const systemMessage = {
+      const systemMessage: ChatMessageProps = {
         role: "robot",
         content: completion,
       };
@@ -34,7 +35,7 @@ export const ChatClient = ({ robot }: ChatClientProps) => {
   });
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    const userMessage = {
+    const userMessage: ChatMessageProps = {
       role: "user",
       content: input,
     };
