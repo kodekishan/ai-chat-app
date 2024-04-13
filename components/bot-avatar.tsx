@@ -6,7 +6,7 @@ interface BotAvatarProps {
 
 export const BotAvatar = ({ src }: BotAvatarProps) => {
   return (
-    <Avatar className="h-12 w-12">
+    <Avatar className="h-12 w-12 shadow-md">
       <AvatarImage src={src} />
     </Avatar>
   );
