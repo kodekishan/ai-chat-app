@@ -42,8 +42,8 @@ export const ChatHeader = ({ robot }: ChatHeaderProps) => {
         className: "bg-green-600 text-white",
         description: "Deleted Successfully",
       });
-      router.refresh();
       router.push("/");
+      router.refresh();
     } catch (err) {
       toast({
         description: "Something went wrong",
